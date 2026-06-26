@@ -49,7 +49,7 @@
 </div>
 
 <!-- ===== MUNDO 1 ===== -->
-<div class="world" data-world="1">
+<div class="world active" data-world="1">
     <div class="bg-wrap"><img src="assets/images/backgrounds/mundo1.jpg" alt="background"></div>
     <div class="content-wrap">
         <div class="mario-left"><img src="assets/images/sprites/mario_mundo1.png" alt="Mario"></div>
@@ -121,7 +121,7 @@
 </div>
 
 <!-- ===== MUNDO 4 ===== -->
-<div class="world active" data-world="4">
+<div class="world" data-world="4">
     <div class="bg-wrap"><img src="assets/images/backgrounds/mundo4.jpg" alt="background"></div>
     <div class="content-wrap">
         <div class="mario-left"><img src="assets/images/sprites/mario_mundo4.png" alt="Mario"></div>
@@ -144,9 +144,67 @@
     </div>
 </div>
 
+<!-- ===== CÁMARA OVERLAY ===== -->
+<div class="camera-overlay" id="cameraOverlay">
+    <div class="camera-container">
+        <div class="camera-header">
+            <span class="camera-title" id="cameraTitle">MUNDO 1</span>
+            <span class="camera-close" id="cameraClose">✕</span>
+        </div>
+        <div class="camera-frame" id="cameraFrame">
+            <video id="cameraFeed" autoplay playsinline></video>
+            <div class="camera-border" id="cameraBorder"></div>
+        </div>
+        <div class="camera-hint">Colócate frente a la cámara y presiona el botón</div>
+        <div class="camera-actions">
+            <button class="camera-btn back" id="cameraBack">Volver</button>
+            <button class="camera-btn shoot" id="cameraShoot">📷 Tomar Foto</button>
+        </div>
+    </div>
+</div>
+
+<!-- ===== GALERÍA FINAL ===== -->
+<div class="gallery-screen" id="galleryScreen">
+    <div class="gallery-container">
+        <div class="gallery-header">
+            <img src="assets/images/icons/corona.png" alt="corona" style="height:48px">
+            <h1>¡AVENTURA COMPLETADA!</h1>
+            <img src="assets/images/icons/corona.png" alt="corona" style="height:48px">
+        </div>
+        <p class="gallery-sub">Tus fotos de cada mundo</p>
+        <div class="gallery-grid" id="galleryGrid">
+            <div class="gallery-item" data-mundo="1">
+                <div class="gallery-thumb" id="thumb1"></div>
+                <span class="gallery-label">MUNDO 1</span>
+                <button class="gallery-download" data-mundo="1">⬇ Descargar</button>
+            </div>
+            <div class="gallery-item" data-mundo="2">
+                <div class="gallery-thumb" id="thumb2"></div>
+                <span class="gallery-label">MUNDO 2</span>
+                <button class="gallery-download" data-mundo="2">⬇ Descargar</button>
+            </div>
+            <div class="gallery-item" data-mundo="3">
+                <div class="gallery-thumb" id="thumb3"></div>
+                <span class="gallery-label">MUNDO 3</span>
+                <button class="gallery-download" data-mundo="3">⬇ Descargar</button>
+            </div>
+            <div class="gallery-item" data-mundo="4">
+                <div class="gallery-thumb" id="thumb4"></div>
+                <span class="gallery-label">MUNDO 4</span>
+                <button class="gallery-download" data-mundo="4">⬇ Descargar</button>
+            </div>
+        </div>
+        <div class="gallery-treasure">
+            <span class="gallery-treasure-icon">🎁</span>
+            <span>¡Has desbloqueado un tesoro especial! Reclámalo en tu perfil.</span>
+        </div>
+    </div>
+</div>
+
 <script src="js/audio.js"></script>
 <script src="js/rotate.js"></script>
 <script src="js/loading.js"></script>
+<script src="js/camera.js"></script>
 <script src="js/app.js"></script>
 </body>
 </html>

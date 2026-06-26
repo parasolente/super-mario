@@ -52,3 +52,5 @@ const AudioManager = {
         this.loadingBgm.currentTime = 0;
     }
 };
+
+AudioManager.init();
