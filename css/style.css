@@ -107,11 +107,11 @@ body{
 .mario-card{
     background-color:#FFF9E6;
     background-image:repeating-linear-gradient(45deg,transparent,transparent 10px,rgba(0,0,0,0.02) 10px,rgba(0,0,0,0.02) 20px);
-    width:55%;min-height:400px;margin-right:2.5%;border-radius:36px;
-    padding:44px 18px 16px 18px;position:relative;
+    width:55%;min-height:648px;margin-right:2.5%;border-radius:40px;
+    padding:70px 24px 24px 24px;position:relative;
     border:8px solid #FFF;
     box-shadow:0 0 0 8px var(--theme),0 12px 0 8px var(--theme-dark),0 24px 30px 10px rgba(0,40,100,0.3);
-    display:flex;flex-direction:column;gap:10px;
+    display:flex;flex-direction:column;gap:16px;
 }
 .banner-top{position:absolute;top:-55px;left:50%;transform:translateX(-50%);z-index:10;line-height:0;filter:drop-shadow(0 6px 0 rgba(0,0,0,0.15))}
 .banner-top img{height:120px;display:block}
@@ -137,7 +137,7 @@ body{
 .text-value{font-size:15px;color:#5C3A21;line-height:1.3;font-weight:600}
 .power-value{background:#FBD000;color:#A64B00;padding:6px 16px;border-radius:20px;border:3px solid #FFF;font-weight:700;font-size:16px;text-align:center;box-shadow:0 4px 0 #D99B00;transform:rotate(-2deg);margin-left:auto}
 
-.bottom-btn-wrap{position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);z-index:10;flex-shrink:0}
+.bottom-btn-wrap{position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);z-index:10;flex-shrink:0}
 .btn-green{
     border:none;border-radius:50px;padding:22px 50px;
     font-family:'Fredoka',sans-serif;font-size:26px;font-weight:700;
@@ -233,3 +233,9 @@ body{
     box-shadow:0 4px 0 #d99b00;
 }
 .gallery-treasure-icon{font-size:28px}
+
+/* MOBILE: card mas compacto para que quepa en pantallas pequeñas */
+@media(max-width:932px){
+    .mario-card{min-height:400px;padding:44px 16px 16px 16px;gap:8px}
+    .bottom-btn-wrap{bottom:-16px}
+}
