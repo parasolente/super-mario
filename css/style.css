@@ -107,8 +107,8 @@ body{
 .mario-card{
     background-color:#FFF9E6;
     background-image:repeating-linear-gradient(45deg,transparent,transparent 10px,rgba(0,0,0,0.02) 10px,rgba(0,0,0,0.02) 20px);
-    width:55%;min-height:440px;margin-right:2.5%;border-radius:40px;
-    padding:48px 20px 18px 20px;position:relative;
+    width:55%;min-height:400px;margin-right:2.5%;border-radius:36px;
+    padding:44px 18px 16px 18px;position:relative;
     border:8px solid #FFF;
     box-shadow:0 0 0 8px var(--theme),0 12px 0 8px var(--theme-dark),0 24px 30px 10px rgba(0,40,100,0.3);
     display:flex;flex-direction:column;gap:10px;
