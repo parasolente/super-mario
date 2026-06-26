@@ -251,7 +251,8 @@ body{
 /* ===== RESPONSIVE: PHONE LANDSCAPE (<933px) ===== */
 @media(max-width:932px){
     body{overflow:hidden}
-    .mario-left{display:none}
+    .mario-left{left:-2%}
+    .mario-left img{max-height:35vh}
     .logo-top-left{top:8px;left:10px}
     .logo-top-left img{height:45px}
 
