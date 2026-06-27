@@ -8,6 +8,7 @@
         AudioManager.stopLoading();
         screen.classList.add('hidden');
         AudioManager.startWorldMusic();
+        Navigation.showWelcome();
     }
 
     function simulate(){

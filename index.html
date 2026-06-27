@@ -37,6 +37,55 @@
   </div>
 </div>
 
+<div class="welcome-screen" id="welcomeScreen">
+  <div class="welcome-container">
+    <div class="welcome-logo">
+      <img src="assets/images/ui/logo.png" alt="Super Mario">
+    </div>
+    <div class="welcome-slides" id="welcomeSlides">
+      <div class="welcome-step active" data-step="1">
+        <div class="welcome-icon-wrap">
+          <img src="assets/images/icons/1up.png" alt="1UP">
+        </div>
+        <h2 class="welcome-title">¡Hola, aventurero!</h2>
+        <p class="welcome-text">Soy Mario. Prepárate para una gran aventura a través de 4 mundos. ¿Estás listo?</p>
+      </div>
+      <div class="welcome-step" data-step="2">
+        <div class="welcome-icon-wrap">
+          <img src="assets/images/icons/flag.png" alt="Bandera">
+        </div>
+        <h2 class="welcome-title">4 Mundos por descubrir</h2>
+        <p class="welcome-text">Explora 4 mundos uno por uno. Cada mundo es un nuevo desafío.</p>
+        <p class="welcome-note">El Mundo 4 es el gran reto contra <strong>Bowser</strong>. ¡Prepárate!</p>
+      </div>
+      <div class="welcome-step" data-step="3">
+        <div class="welcome-icon-wrap">
+          <img src="assets/images/icons/coin.png" alt="Moneda">
+          <img src="assets/images/icons/star.png" alt="Estrella">
+        </div>
+        <h2 class="welcome-title">Monedas y Estrellas</h2>
+        <p class="welcome-text">Busca monedas y estrellas con tu cámara. En los mundos 1, 2 y 3 necesitas 5 monedas y 3 estrellas.</p>
+        <p class="welcome-note">Pero en el <strong>Mundo 4</strong> contra Bowser necesitarás <strong>10 monedas y 5 estrellas</strong>. ¡El doble!</p>
+      </div>
+      <div class="welcome-step" data-step="4">
+        <div class="welcome-icon-wrap">
+          <img src="assets/images/icons/1up.png" alt="Selfie">
+          <img src="assets/images/icons/gift.png" alt="Tesoro">
+        </div>
+        <h2 class="welcome-title">Selfie y Tesoro Final</h2>
+        <p class="welcome-text">Completa cada mundo con un selfie. Derrota a Bowser y consigue el tesoro final.</p>
+      </div>
+    </div>
+    <div class="welcome-dots" id="welcomeDots">
+      <span class="welcome-dot active" data-dot="1"></span>
+      <span class="welcome-dot" data-dot="2"></span>
+      <span class="welcome-dot" data-dot="3"></span>
+      <span class="welcome-dot" data-dot="4"></span>
+    </div>
+    <button class="welcome-btn" id="welcomeAction">Siguiente</button>
+  </div>
+</div>
+
 <audio id="bgm" loop preload="auto"></audio>
 
 <div class="logo-top-left">
@@ -222,8 +271,8 @@
 </div>
 
 <script src="js/audio.js"></script>
-<script src="js/loading.js"></script>
-<script src="js/camera.js"></script>
 <script src="js/app.js"></script>
+<script src="js/camera.js"></script>
+<script src="js/loading.js"></script>
 </body>
 </html>

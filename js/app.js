@@ -1,12 +1,47 @@
 const Navigation = {
     currentWorld: 1,
     totalWorlds: 4,
+    currentWelcomeStep: 1,
+    totalWelcomeSteps: 4,
 
     init(){
-        this.showWorld(1);
         this.setupButtons();
         this.setupCameraButtons();
         this.setupDownloads();
+        this.setupWelcomeButtons();
+    },
+
+    showWelcome(){
+        document.getElementById('welcomeScreen').classList.add('show');
+        this.currentWelcomeStep = 1;
+        this.updateWelcomeStep(1);
+    },
+
+    updateWelcomeStep(step){
+        document.querySelectorAll('.welcome-step').forEach(s => s.classList.remove('active'));
+        const el = document.querySelector(`.welcome-step[data-step="${step}"]`);
+        if(el) el.classList.add('active');
+
+        document.querySelectorAll('.welcome-dot').forEach(d => d.classList.remove('active'));
+        const dot = document.querySelector(`.welcome-dot[data-dot="${step}"]`);
+        if(dot) dot.classList.add('active');
+
+        const btn = document.getElementById('welcomeAction');
+        btn.textContent = step >= this.totalWelcomeSteps ? 'Comenzar aventura' : 'Siguiente';
+    },
+
+    nextWelcomeStep(){
+        if(this.currentWelcomeStep >= this.totalWelcomeSteps){
+            this.startAdventure();
+        } else {
+            this.currentWelcomeStep++;
+            this.updateWelcomeStep(this.currentWelcomeStep);
+        }
+    },
+
+    startAdventure(){
+        document.getElementById('welcomeScreen').classList.remove('show');
+        this.showWorld(1);
     },
 
     showWorld(num){
@@ -41,6 +76,19 @@ const Navigation = {
                 thumb.style.backgroundPosition = 'center';
             }
         }
+    },
+
+    setupWelcomeButtons(){
+        document.getElementById('welcomeAction').addEventListener('click', () => this.nextWelcomeStep());
+        document.querySelectorAll('.welcome-dot').forEach(dot => {
+            dot.addEventListener('click', () => {
+                const step = parseInt(dot.dataset.dot);
+                if(step >= 1 && step <= this.totalWelcomeSteps){
+                    this.currentWelcomeStep = step;
+                    this.updateWelcomeStep(step);
+                }
+            });
+        });
     },
 
     setupButtons(){
