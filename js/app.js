@@ -30,8 +30,13 @@ const Navigation = {
         document.getElementById('galleryScreen').classList.add('show');
         for(let i = 1; i <= 4; i++){
             const thumb = document.getElementById(`thumb${i}`);
-            if(CameraManager.photos[i]){
-                thumb.style.backgroundImage = `url(${CameraManager.photos[i]})`;
+            const p = CameraManager.getProgress(i);
+            if(p.selfie){
+                thumb.style.backgroundImage = `url(${p.selfie})`;
+                thumb.style.backgroundSize = 'cover';
+                thumb.style.backgroundPosition = 'center';
+            } else if(p.photos.length > 0){
+                thumb.style.backgroundImage = `url(${p.photos[0].data})`;
                 thumb.style.backgroundSize = 'cover';
                 thumb.style.backgroundPosition = 'center';
             }
@@ -52,7 +57,6 @@ const Navigation = {
     },
 
     setupCameraButtons(){
-        document.getElementById('cameraShoot').addEventListener('click', () => CameraManager.capture());
         document.getElementById('cameraBack').addEventListener('click', () => {
             CameraManager.close();
             Navigation.showWorld(Navigation.currentWorld);
@@ -61,6 +65,9 @@ const Navigation = {
             CameraManager.close();
             Navigation.showWorld(Navigation.currentWorld);
         });
+        document.getElementById('btnCoin').addEventListener('click', () => CameraManager.capture('coin'));
+        document.getElementById('btnStar').addEventListener('click', () => CameraManager.capture('star'));
+        document.getElementById('btnSelfie').addEventListener('click', () => CameraManager.takeSelfie());
     },
 
     setupDownloads(){

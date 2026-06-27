@@ -154,36 +154,51 @@ body{
 .camera-container{
     background:#FFF9E6;border-radius:28px;
     border:6px solid #FFF;box-shadow:0 0 0 6px #fbd000,0 12px 0 6px #d99b00;
-    padding:20px;width:90%;max-width:500px;display:flex;flex-direction:column;gap:12px;
+    padding:16px;width:90%;max-width:500px;display:flex;flex-direction:column;gap:8px;
 }
 .camera-header{
     display:flex;justify-content:space-between;align-items:center;
-    background:#E52521;border-radius:16px;padding:10px 16px;
+    background:#E52521;border-radius:14px;padding:8px 14px;
     border:3px solid #fbd000;
 }
-.camera-title{font-family:'SuperMario256',sans-serif;font-size:24px;color:#fff;text-shadow:2px 2px 0 #8b0000;letter-spacing:2px}
-.camera-close{color:#fff;font-size:24px;cursor:pointer;width:36px;height:36px;display:flex;align-items:center;justify-content:center;background:#b31815;border-radius:50%;border:2px solid #fbd000}
-.camera-frame{position:relative;border-radius:16px;overflow:hidden;background:#000;aspect-ratio:4/3}
+.camera-title{font-family:'SuperMario256',sans-serif;font-size:22px;color:#fff;text-shadow:2px 2px 0 #8b0000;letter-spacing:2px}
+.camera-close{color:#fff;font-size:20px;cursor:pointer;width:32px;height:32px;display:flex;align-items:center;justify-content:center;background:#b31815;border-radius:50%;border:2px solid #fbd000}
+
+.camera-progress{display:flex;justify-content:center;gap:24px;padding:4px 0}
+.camera-progress-item{display:flex;align-items:center;gap:6px;background:#FFF;border:3px solid #F0E6D2;border-radius:14px;padding:4px 14px;box-shadow:0 3px 0 #E3D7BC}
+.camera-progress-icon{width:22px;height:22px;display:block}
+.camera-progress-text{font-family:'SuperMario256',sans-serif;font-size:16px;color:#5C3A21;letter-spacing:1px}
+
+.camera-frame{position:relative;border-radius:14px;overflow:hidden;background:#000;aspect-ratio:4/3;border:3px solid #FFF;box-shadow:0 0 0 4px #fbd000}
 #cameraFeed{width:100%;height:100%;object-fit:cover;display:block}
-.camera-border{
-    position:absolute;inset:0;pointer-events:none;
-    border:6px solid #43B047;border-radius:14px;
-    box-shadow:inset 0 0 0 6px #43B047;
-    transition:border-color 0.3s,box-shadow 0.3s;
-}
-.camera-hint{text-align:center;font-size:14px;color:#666;font-weight:600}
-.camera-actions{display:flex;gap:12px;justify-content:center}
+
+.camera-hint{text-align:center;font-size:13px;color:#666;font-weight:600;margin:2px 0}
+
+.camera-actions{display:flex;gap:10px;justify-content:center}
+.camera-actions-bottom{display:flex;gap:10px;justify-content:center;margin-top:4px}
 .camera-btn{
-    border:none;border-radius:50px;padding:14px 28px;
-    font-family:'Fredoka',sans-serif;font-size:18px;font-weight:700;
+    border:none;border-radius:50px;padding:12px 20px;
+    font-family:'Fredoka',sans-serif;font-size:16px;font-weight:700;
     cursor:pointer;outline:none;transition:all 0.2s;
+    display:flex;align-items:center;gap:6px;
 }
-.camera-btn.back{background:#888;color:#fff;box-shadow:0 4px 0 #666}
+.btn-icon{width:22px;height:22px;display:block}
+
+.camera-btn.back{background:#888;color:#fff;box-shadow:0 4px 0 #666;padding:12px 24px}
 .camera-btn.back:hover{transform:scale(1.04)}
 .camera-btn.back:active{transform:translateY(4px);box-shadow:0 0 0 #666}
-.camera-btn.shoot{background:#E52521;color:#fff;box-shadow:0 4px 0 #b31815;font-size:20px}
-.camera-btn.shoot:hover{transform:scale(1.04)}
-.camera-btn.shoot:active{transform:translateY(4px);box-shadow:0 0 0 #b31815}
+
+.camera-btn.coin{background:#fbd000;color:#a64b00;box-shadow:0 4px 0 #d99b00;flex:1;justify-content:center;font-size:18px}
+.camera-btn.coin:hover{transform:scale(1.04)}
+.camera-btn.coin:active{transform:translateY(4px);box-shadow:0 0 0 #d99b00}
+
+.camera-btn.star{background:#E52521;color:#fff;box-shadow:0 4px 0 #b31815;flex:1;justify-content:center;font-size:18px}
+.camera-btn.star:hover{transform:scale(1.04)}
+.camera-btn.star:active{transform:translateY(4px);box-shadow:0 0 0 #b31815}
+
+.camera-btn.selfie{background:#43B047;color:#fff;box-shadow:0 4px 0 #2B7A2F;flex:1;justify-content:center;font-size:18px;padding:14px 28px}
+.camera-btn.selfie:hover{transform:scale(1.04)}
+.camera-btn.selfie:active{transform:translateY(4px);box-shadow:0 0 0 #2B7A2F}
 
 /* GALLERY */
 .gallery-screen{
@@ -227,7 +242,7 @@ body{
     padding:12px 20px;font-size:15px;font-weight:700;color:#a64b00;width:100%;
     box-shadow:0 4px 0 #d99b00;
 }
-.gallery-treasure-icon{font-size:28px}
+.gallery-treasure-icon{width:28px;height:28px;display:block}
 
 /* MOBILE: card compacto para que quepa en pantallas pequeñas */
 @media(max-width:932px){
