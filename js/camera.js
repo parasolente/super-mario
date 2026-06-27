@@ -27,6 +27,7 @@ const CameraManager = {
         document.getElementById('cameraWorldNum').textContent = worldNum;
         document.getElementById('btnCoin').style.display = 'flex';
         document.getElementById('btnStar').style.display = 'flex';
+        document.getElementById('cameraFrameOverlay').src = `assets/images/frames/marco_mundo${worldNum}.png`;
         this.updateProgress();
         this.overlay.classList.add('show');
         try {
