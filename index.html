@@ -2,223 +2,224 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Super Mario</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#e52521">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<title>Super Mario — Aventura Interactiva</title>
 <link rel="icon" type="image/png" href="assets/images/icons/gift.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
 <audio id="loadingBgm" loop preload="auto" src="assets/audio/music/carga.mp3" muted></audio>
 
-<div class="rotate-screen" id="rotateScreen">
-    <div class="rotate-content">
-        <div class="rotate-icon">
-            <img src="assets/images/ui/v_to_hsvg.png" alt="Voltea">
-        </div>
-        <img src="assets/images/ui/voltea.png" alt="Voltea tu dispositivo" style="height:64px;display:block">
-        <div class="rotate-sub">Gira tu dispositivo a modo horizontal para continuar</div>
-    </div>
-</div>
-
 <div class="loading-screen" id="loadingScreen">
-    <div class="loading-wrapper">
-        <div class="loading-icon-wrap">
-            <img class="main-icon" src="assets/images/icons/1up.png" alt="Cargando...">
-            <div class="shadow-floor"></div>
-        </div>
-        <div class="progress-container">
-            <div class="progress-track">
-                <div class="progress-bar" id="progressBar"></div>
-            </div>
-        </div>
-        <div class="tip-box">
-            <span class="tip-tag">¿SABÍAS QUE...?</span>
-            <div class="tip-icon">
-                <img src="assets/images/icons/star.png" alt="Tip">
-            </div>
-            <p class="tip-text">Si consigues las 3 estrellas de un mundo, desbloquearás un desafío secreto en tu tarjeta de jugador.</p>
-        </div>
+  <div class="loading-wrapper">
+    <div class="loading-icon-wrap">
+      <img class="main-icon" src="assets/images/icons/1up.png" alt="Cargando...">
+      <div class="shadow-floor"></div>
     </div>
+    <div class="progress-container">
+      <div class="progress-track">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+    </div>
+    <div class="tip-box">
+      <span class="tip-tag">¿SABÍAS QUE...?</span>
+      <div class="tip-icon">
+        <img src="assets/images/icons/star.png" alt="Tip">
+      </div>
+      <p class="tip-text">Si consigues las 3 estrellas de un mundo, desbloquearás un desafío secreto en tu tarjeta de jugador.</p>
+    </div>
+  </div>
 </div>
 
 <audio id="bgm" loop preload="auto"></audio>
 
 <div class="logo-top-left">
-    <img src="assets/images/ui/logo.png" alt="Super Mario">
+  <img src="assets/images/ui/logo.png" alt="Super Mario">
 </div>
 
-<!-- ===== MUNDO 1 ===== -->
-<div class="world active" data-world="1">
-    <div class="bg-wrap"><img src="assets/images/backgrounds/mundo1.jpg" alt="background"></div>
+<main class="worlds-container">
+  <section class="world active" data-world="1">
+    <div class="bg-wrap"><img src="assets/images/backgrounds/mundo1.jpg" alt=""></div>
     <div class="content-wrap">
-        <div class="mario-left"><img src="assets/images/sprites/mario_mundo1.png" alt="Mario"></div>
-        <div class="mario-card">
-            <div class="banner-top"><img src="assets/images/banners/liston_mundo1.png" alt="Mundo 1"></div>
-            <div class="hero-header">
-                <div class="hero-info">
-                    <span class="hero-name-label">NOMBRE DEL HÉROE:</span>
-                    <img src="assets/images/ui/nombre.png" alt="Arturo Adolfo" style="max-width:50%;height:auto;display:block">
-                </div>
-                <div class="hero-icon"><img src="assets/images/icons/1up.png" alt="1UP"></div>
-            </div>
-            <div class="bubble-container"><div class="stat-icon"><img src="assets/images/icons/coin.png" alt="coin"></div><span class="stat-label">MONEDAS:</span><div class="slots"><div class="slot-item"></div><div class="slot-item"></div><div class="slot-item"></div><div class="slot-item"></div><div class="slot-item"></div></div><span class="stat-value">0/5</span></div>
-            <div class="bubble-container"><div class="stat-icon"><img src="assets/images/icons/star.png" alt="star"></div><span class="stat-label">ESTRELLAS:</span><div class="slots"><div class="slot-item"></div><div class="slot-item"></div><div class="slot-item"></div></div><span class="stat-value">0/3</span></div>
-            <div class="bubble-container"><div class="stat-icon"><img src="assets/images/icons/fire.png" alt="fire"></div><span class="stat-label">PODER:</span><span class="power-value">PRINCIPIANTE</span></div>
-            <div class="bubble-container"><div class="stat-icon"><img src="assets/images/icons/flag.png" alt="flag"></div><div class="text-block"><span class="stat-label small">DESAFÍO:</span><span class="text-value">¡Encuentra 5 monedas<br>y abre el cofre secreto!</span></div></div>
-            <div class="bubble-container"><div class="stat-icon"><img src="assets/images/icons/gift.png" alt="gift"></div><div class="text-block"><span class="stat-label small">RECOMPENSA:</span><span class="text-value">Un gran premio te espera<br>dentro del siguiente cofre.</span></div></div>
-            <div class="bottom-btn-wrap"><button class="btn-green">Entra al Mundo</button></div>
+      <div class="mario-left"><img src="assets/images/sprites/mario_mundo1.png" alt="Mario Mundo 1"></div>
+      <div class="mario-card">
+        <div class="banner-top"><img src="assets/images/banners/liston_mundo1.png" alt="Mundo 1"></div>
+        <div class="hero-header">
+          <div class="hero-info">
+            <span class="hero-name-label">NOMBRE DEL HÉROE:</span>
+            <img src="assets/images/ui/nombre.png" alt="Arturo Adolfo" class="hero-name-value">
+          </div>
+          <div class="hero-icon"><img src="assets/images/icons/1up.png" alt="1UP"></div>
         </div>
+        <div class="stats-grid">
+          <div class="bubble-container"><div class="stat-icon"><img src="assets/images/icons/coin.png" alt="coin"></div><span class="stat-label">MONEDAS:</span><div class="slots"><div class="slot-item"></div><div class="slot-item"></div><div class="slot-item"></div><div class="slot-item"></div><div class="slot-item"></div></div><span class="stat-value">0/5</span></div>
+          <div class="bubble-container"><div class="stat-icon"><img src="assets/images/icons/star.png" alt="star"></div><span class="stat-label">ESTRELLAS:</span><div class="slots"><div class="slot-item"></div><div class="slot-item"></div><div class="slot-item"></div></div><span class="stat-value">0/3</span></div>
+          <div class="bubble-container"><div class="stat-icon"><img src="assets/images/icons/fire.png" alt="fire"></div><span class="stat-label">PODER:</span><span class="power-value">PRINCIPIANTE</span></div>
+          <div class="bubble-container"><div class="stat-icon"><img src="assets/images/icons/flag.png" alt="flag"></div><div class="text-block"><span class="stat-label small">DESAFÍO:</span><span class="text-value">¡Encuentra 5 monedas<br>y abre el cofre secreto!</span></div></div>
+          <div class="bubble-container"><div class="stat-icon"><img src="assets/images/icons/gift.png" alt="gift"></div><div class="text-block"><span class="stat-label small">RECOMPENSA:</span><span class="text-value">Un gran premio te espera<br>dentro del siguiente cofre.</span></div></div>
+        </div>
+        <div class="bottom-btn-wrap"><button class="btn-green">Entra al Mundo</button></div>
+      </div>
     </div>
-</div>
+  </section>
 
-<!-- ===== MUNDO 2 ===== -->
-<div class="world" data-world="2">
-    <div class="bg-wrap"><img src="assets/images/backgrounds/mundo2.jpg" alt="background"></div>
+  <section class="world" data-world="2">
+    <div class="bg-wrap"><img src="assets/images/backgrounds/mundo2.jpg" alt=""></div>
     <div class="content-wrap">
-        <div class="mario-left"><img src="assets/images/sprites/mario_mundo2.png" alt="Mario"></div>
-        <div class="mario-card">
-            <div class="banner-top"><img src="assets/images/banners/liston_mundo2.png" alt="Mundo 2"></div>
-            <div class="hero-header">
-                <div class="hero-info">
-                    <span class="hero-name-label">NOMBRE DEL HÉROE:</span>
-                    <img src="assets/images/ui/nombre.png" alt="Arturo Adolfo" style="max-width:50%;height:auto;display:block">
-                </div>
-                <div class="hero-icon"><img src="assets/images/icons/star.png" alt="star"></div>
-            </div>
-            <div class="bubble-container"><div class="stat-icon"><img src="assets/images/icons/coin.png" alt="coin"></div><span class="stat-label">MONEDAS:</span><div class="slots"><div class="slot-item"></div><div class="slot-item"></div><div class="slot-item"></div><div class="slot-item"></div><div class="slot-item"></div></div><span class="stat-value">0/5</span></div>
-            <div class="bubble-container"><div class="stat-icon"><img src="assets/images/icons/star.png" alt="star"></div><span class="stat-label">ESTRELLAS:</span><div class="slots"><div class="slot-item"></div><div class="slot-item"></div><div class="slot-item"></div></div><span class="stat-value">0/3</span></div>
-            <div class="bubble-container"><div class="stat-icon"><img src="assets/images/icons/fire.png" alt="fire"></div><span class="stat-label">PODER:</span><span class="power-value">CHAMPIÑÓN</span></div>
-            <div class="bubble-container"><div class="stat-icon"><img src="assets/images/icons/flag.png" alt="flag"></div><div class="text-block"><span class="stat-label small">DESAFÍO:</span><span class="text-value">¡Encuentra 5 monedas<br>y abre el cofre secreto!</span></div></div>
-            <div class="bubble-container"><div class="stat-icon"><img src="assets/images/icons/gift.png" alt="gift"></div><div class="text-block"><span class="stat-label small">RECOMPENSA:</span><span class="text-value">Un gran premio te espera<br>dentro del siguiente cofre.</span></div></div>
-            <div class="bottom-btn-wrap"><button class="btn-green">Entra al Mundo</button></div>
+      <div class="mario-left"><img src="assets/images/sprites/mario_mundo2.png" alt="Mario Mundo 2"></div>
+      <div class="mario-card">
+        <div class="banner-top"><img src="assets/images/banners/liston_mundo2.png" alt="Mundo 2"></div>
+        <div class="hero-header">
+          <div class="hero-info">
+            <span class="hero-name-label">NOMBRE DEL HÉROE:</span>
+            <img src="assets/images/ui/nombre.png" alt="Arturo Adolfo" class="hero-name-value">
+          </div>
+          <div class="hero-icon"><img src="assets/images/icons/star.png" alt="star"></div>
         </div>
+        <div class="stats-grid">
+          <div class="bubble-container"><div class="stat-icon"><img src="assets/images/icons/coin.png" alt="coin"></div><span class="stat-label">MONEDAS:</span><div class="slots"><div class="slot-item"></div><div class="slot-item"></div><div class="slot-item"></div><div class="slot-item"></div><div class="slot-item"></div></div><span class="stat-value">0/5</span></div>
+          <div class="bubble-container"><div class="stat-icon"><img src="assets/images/icons/star.png" alt="star"></div><span class="stat-label">ESTRELLAS:</span><div class="slots"><div class="slot-item"></div><div class="slot-item"></div><div class="slot-item"></div></div><span class="stat-value">0/3</span></div>
+          <div class="bubble-container"><div class="stat-icon"><img src="assets/images/icons/fire.png" alt="fire"></div><span class="stat-label">PODER:</span><span class="power-value">CHAMPIÑÓN</span></div>
+          <div class="bubble-container"><div class="stat-icon"><img src="assets/images/icons/flag.png" alt="flag"></div><div class="text-block"><span class="stat-label small">DESAFÍO:</span><span class="text-value">¡Encuentra 5 monedas<br>y abre el cofre secreto!</span></div></div>
+          <div class="bubble-container"><div class="stat-icon"><img src="assets/images/icons/gift.png" alt="gift"></div><div class="text-block"><span class="stat-label small">RECOMPENSA:</span><span class="text-value">Un gran premio te espera<br>dentro del siguiente cofre.</span></div></div>
+        </div>
+        <div class="bottom-btn-wrap"><button class="btn-green">Entra al Mundo</button></div>
+      </div>
     </div>
-</div>
+  </section>
 
-<!-- ===== MUNDO 3 ===== -->
-<div class="world" data-world="3">
-    <div class="bg-wrap"><img src="assets/images/backgrounds/mundo3.jpg" alt="background"></div>
+  <section class="world" data-world="3">
+    <div class="bg-wrap"><img src="assets/images/backgrounds/mundo3.jpg" alt=""></div>
     <div class="content-wrap">
-        <div class="mario-left"><img src="assets/images/sprites/mario_mundo3.png" alt="Mario"></div>
-        <div class="mario-card">
-            <div class="banner-top"><img src="assets/images/banners/liston_mundo3.png" alt="Mundo 3"></div>
-            <div class="hero-header">
-                <div class="hero-info">
-                    <span class="hero-name-label">NOMBRE DEL HÉROE:</span>
-                    <img src="assets/images/ui/nombre.png" alt="Arturo Adolfo" style="max-width:50%;height:auto;display:block">
-                </div>
-                <div class="hero-icon"><img src="assets/images/icons/ice.png" alt="ice"></div>
-            </div>
-            <div class="bubble-container"><div class="stat-icon"><img src="assets/images/icons/coin.png" alt="coin"></div><span class="stat-label">MONEDAS:</span><div class="slots"><div class="slot-item"></div><div class="slot-item"></div><div class="slot-item"></div><div class="slot-item"></div><div class="slot-item"></div></div><span class="stat-value">0/5</span></div>
-            <div class="bubble-container"><div class="stat-icon"><img src="assets/images/icons/star.png" alt="star"></div><span class="stat-label">ESTRELLAS:</span><div class="slots"><div class="slot-item"></div><div class="slot-item"></div><div class="slot-item"></div></div><span class="stat-value">0/3</span></div>
-            <div class="bubble-container"><div class="stat-icon"><img src="assets/images/icons/fire.png" alt="fire"></div><span class="stat-label">PODER:</span><span class="power-value">FLOR DE HIELO</span></div>
-            <div class="bubble-container"><div class="stat-icon"><img src="assets/images/icons/flag.png" alt="flag"></div><div class="text-block"><span class="stat-label small">DESAFÍO:</span><span class="text-value">¡Encuentra 5 monedas<br>y abre el cofre secreto!</span></div></div>
-            <div class="bubble-container"><div class="stat-icon"><img src="assets/images/icons/gift.png" alt="gift"></div><div class="text-block"><span class="stat-label small">RECOMPENSA:</span><span class="text-value">Un gran premio te espera<br>dentro del siguiente cofre.</span></div></div>
-            <div class="bottom-btn-wrap"><button class="btn-green">Entra al Mundo</button></div>
+      <div class="mario-left"><img src="assets/images/sprites/mario_mundo3.png" alt="Mario Mundo 3"></div>
+      <div class="mario-card">
+        <div class="banner-top"><img src="assets/images/banners/liston_mundo3.png" alt="Mundo 3"></div>
+        <div class="hero-header">
+          <div class="hero-info">
+            <span class="hero-name-label">NOMBRE DEL HÉROE:</span>
+            <img src="assets/images/ui/nombre.png" alt="Arturo Adolfo" class="hero-name-value">
+          </div>
+          <div class="hero-icon"><img src="assets/images/icons/ice.png" alt="ice"></div>
         </div>
+        <div class="stats-grid">
+          <div class="bubble-container"><div class="stat-icon"><img src="assets/images/icons/coin.png" alt="coin"></div><span class="stat-label">MONEDAS:</span><div class="slots"><div class="slot-item"></div><div class="slot-item"></div><div class="slot-item"></div><div class="slot-item"></div><div class="slot-item"></div></div><span class="stat-value">0/5</span></div>
+          <div class="bubble-container"><div class="stat-icon"><img src="assets/images/icons/star.png" alt="star"></div><span class="stat-label">ESTRELLAS:</span><div class="slots"><div class="slot-item"></div><div class="slot-item"></div><div class="slot-item"></div></div><span class="stat-value">0/3</span></div>
+          <div class="bubble-container"><div class="stat-icon"><img src="assets/images/icons/fire.png" alt="fire"></div><span class="stat-label">PODER:</span><span class="power-value">FLOR DE HIELO</span></div>
+          <div class="bubble-container"><div class="stat-icon"><img src="assets/images/icons/flag.png" alt="flag"></div><div class="text-block"><span class="stat-label small">DESAFÍO:</span><span class="text-value">¡Encuentra 5 monedas<br>y abre el cofre secreto!</span></div></div>
+          <div class="bubble-container"><div class="stat-icon"><img src="assets/images/icons/gift.png" alt="gift"></div><div class="text-block"><span class="stat-label small">RECOMPENSA:</span><span class="text-value">Un gran premio te espera<br>dentro del siguiente cofre.</span></div></div>
+        </div>
+        <div class="bottom-btn-wrap"><button class="btn-green">Entra al Mundo</button></div>
+      </div>
     </div>
-</div>
+  </section>
 
-<!-- ===== MUNDO 4 ===== -->
-<div class="world" data-world="4">
-    <div class="bg-wrap"><img src="assets/images/backgrounds/mundo4.jpg" alt="background"></div>
+  <section class="world" data-world="4">
+    <div class="bg-wrap"><img src="assets/images/backgrounds/mundo4.jpg" alt=""></div>
     <div class="content-wrap">
-        <div class="mario-left"><img src="assets/images/sprites/mario_mundo4.png" alt="Mario"></div>
-        <div class="mario-card">
-            <div class="banner-top"><img src="assets/images/banners/liston_mundo4.png" alt="Mundo 4"></div>
-            <div class="hero-header">
-                <div class="hero-info">
-                    <span class="hero-name-label">NOMBRE DEL HÉROE:</span>
-                    <img src="assets/images/ui/nombre.png" alt="Arturo Adolfo" style="max-width:50%;height:auto;display:block">
-                </div>
-                <div class="hero-icon"><img src="assets/images/icons/corona.png" alt="corona"></div>
-            </div>
-            <div class="bubble-container"><div class="stat-icon"><img src="assets/images/icons/coin.png" alt="coin"></div><span class="stat-label">MONEDAS:</span><div class="slots"><div class="slot-item"></div><div class="slot-item"></div><div class="slot-item"></div><div class="slot-item"></div><div class="slot-item"></div></div><span class="stat-value">0/5</span></div>
-            <div class="bubble-container"><div class="stat-icon"><img src="assets/images/icons/star.png" alt="star"></div><span class="stat-label">ESTRELLAS:</span><div class="slots"><div class="slot-item"></div><div class="slot-item"></div><div class="slot-item"></div></div><span class="stat-value">0/3</span></div>
-            <div class="bubble-container"><div class="stat-icon"><img src="assets/images/icons/fire.png" alt="fire"></div><span class="stat-label">PODER:</span><span class="power-value">INVENCIBLE</span></div>
-            <div class="bubble-container"><div class="stat-icon"><img src="assets/images/icons/flag.png" alt="flag"></div><div class="text-block"><span class="stat-label small">DESAFÍO:</span><span class="text-value">¡Encuentra 5 monedas<br>y abre el cofre secreto!</span></div></div>
-            <div class="bubble-container"><div class="stat-icon"><img src="assets/images/icons/gift.png" alt="gift"></div><div class="text-block"><span class="stat-label small">RECOMPENSA:</span><span class="text-value">Un gran premio te espera<br>dentro del siguiente cofre.</span></div></div>
-            <div class="bottom-btn-wrap"><button class="btn-green">Entra al Mundo</button></div>
+      <div class="mario-left"><img src="assets/images/sprites/mario_mundo4.png" alt="Mario Mundo 4"></div>
+      <div class="mario-card">
+        <div class="banner-top"><img src="assets/images/banners/liston_mundo4.png" alt="Mundo 4"></div>
+        <div class="hero-header">
+          <div class="hero-info">
+            <span class="hero-name-label">NOMBRE DEL HÉROE:</span>
+            <img src="assets/images/ui/nombre.png" alt="Arturo Adolfo" class="hero-name-value">
+          </div>
+          <div class="hero-icon"><img src="assets/images/icons/corona.png" alt="corona"></div>
         </div>
+        <div class="stats-grid">
+          <div class="bubble-container"><div class="stat-icon"><img src="assets/images/icons/coin.png" alt="coin"></div><span class="stat-label">MONEDAS:</span><div class="slots"><div class="slot-item"></div><div class="slot-item"></div><div class="slot-item"></div><div class="slot-item"></div><div class="slot-item"></div></div><span class="stat-value">0/5</span></div>
+          <div class="bubble-container"><div class="stat-icon"><img src="assets/images/icons/star.png" alt="star"></div><span class="stat-label">ESTRELLAS:</span><div class="slots"><div class="slot-item"></div><div class="slot-item"></div><div class="slot-item"></div></div><span class="stat-value">0/3</span></div>
+          <div class="bubble-container"><div class="stat-icon"><img src="assets/images/icons/fire.png" alt="fire"></div><span class="stat-label">PODER:</span><span class="power-value">INVENCIBLE</span></div>
+          <div class="bubble-container"><div class="stat-icon"><img src="assets/images/icons/flag.png" alt="flag"></div><div class="text-block"><span class="stat-label small">DESAFÍO:</span><span class="text-value">¡Encuentra 5 monedas<br>y abre el cofre secreto!</span></div></div>
+          <div class="bubble-container"><div class="stat-icon"><img src="assets/images/icons/gift.png" alt="gift"></div><div class="text-block"><span class="stat-label small">RECOMPENSA:</span><span class="text-value">Un gran premio te espera<br>dentro del siguiente cofre.</span></div></div>
+        </div>
+        <div class="bottom-btn-wrap"><button class="btn-green">Entra al Mundo</button></div>
+      </div>
     </div>
-</div>
+  </section>
+</main>
 
-<!-- ===== CÁMARA OVERLAY ===== -->
 <div class="camera-overlay" id="cameraOverlay">
-    <video id="cameraFeed" autoplay playsinline></video>
-    <img id="cameraFrameOverlay" class="camera-frame-overlay" alt="marco">
+  <video id="cameraFeed" autoplay playsinline></video>
+  <img id="cameraFrameOverlay" class="camera-frame-overlay" alt="marco">
+  <div class="camera-error" id="cameraError">
+    <span>No se detectó cámara. Las fotos serán simuladas.</span>
+  </div>
 
-    <div class="hud-top">
-        <div class="hud-title-row">
-            <span class="hud-title">MUNDO</span>
-            <span class="hud-title-num" id="cameraWorldNum">1</span>
-            <span class="hud-close" id="cameraClose">✕</span>
-        </div>
-        <div class="hud-progress">
-            <div class="hud-progress-item">
-                <img src="assets/images/icons/coin.png" alt="coin" class="hud-icon">
-                <span class="hud-text" id="coinCount">0/5</span>
-            </div>
-            <div class="hud-progress-item">
-                <img src="assets/images/icons/star.png" alt="star" class="hud-icon">
-                <span class="hud-text" id="starCount">0/3</span>
-            </div>
-        </div>
+  <div class="hud-top">
+    <div class="hud-title-row">
+      <span class="hud-title">MUNDO</span>
+      <span class="hud-title-num" id="cameraWorldNum">1</span>
+      <span class="hud-close" id="cameraClose">✕</span>
     </div>
+    <div class="hud-progress">
+      <div class="hud-progress-item">
+        <img src="assets/images/icons/coin.png" alt="coin" class="hud-icon">
+        <span class="hud-text" id="coinCount">0/5</span>
+      </div>
+      <div class="hud-progress-item">
+        <img src="assets/images/icons/star.png" alt="star" class="hud-icon">
+        <span class="hud-text" id="starCount">0/3</span>
+      </div>
+    </div>
+  </div>
 
-    <div class="hud-bottom">
-        <button class="hud-btn back" id="cameraBack">Volver</button>
-        <button class="hud-btn coin" id="btnCoin">
-            <img src="assets/images/icons/coin.png" alt="coin" class="btn-icon"> Moneda
-        </button>
-        <button class="hud-btn star" id="btnStar">
-            <img src="assets/images/icons/star.png" alt="star" class="btn-icon"> Estrella
-        </button>
-        <button class="hud-btn selfie" id="btnSelfie" style="display:none">Selfie</button>
-    </div>
+  <div class="hud-bottom">
+    <button class="hud-btn back" id="cameraBack">Volver</button>
+    <button class="hud-btn coin" id="btnCoin">
+      <img src="assets/images/icons/coin.png" alt="coin" class="btn-icon"> Moneda
+    </button>
+    <button class="hud-btn star" id="btnStar">
+      <img src="assets/images/icons/star.png" alt="star" class="btn-icon"> Estrella
+    </button>
+    <button class="hud-btn selfie" id="btnSelfie" style="display:none">Selfie</button>
+  </div>
 </div>
 
-<!-- ===== GALERÍA FINAL ===== -->
 <div class="gallery-screen" id="galleryScreen">
-    <div class="gallery-container">
-        <div class="gallery-header">
-            <img src="assets/images/icons/corona.png" alt="corona" style="height:48px">
-            <h1>¡AVENTURA COMPLETADA!</h1>
-            <img src="assets/images/icons/corona.png" alt="corona" style="height:48px">
-        </div>
-        <p class="gallery-sub">Tus fotos de cada mundo</p>
-        <div class="gallery-grid" id="galleryGrid">
-            <div class="gallery-item" data-mundo="1">
-                <div class="gallery-thumb" id="thumb1"></div>
-                <span class="gallery-label">MUNDO 1</span>
-                <button class="gallery-download" data-mundo="1">⬇ Descargar</button>
-            </div>
-            <div class="gallery-item" data-mundo="2">
-                <div class="gallery-thumb" id="thumb2"></div>
-                <span class="gallery-label">MUNDO 2</span>
-                <button class="gallery-download" data-mundo="2">⬇ Descargar</button>
-            </div>
-            <div class="gallery-item" data-mundo="3">
-                <div class="gallery-thumb" id="thumb3"></div>
-                <span class="gallery-label">MUNDO 3</span>
-                <button class="gallery-download" data-mundo="3">⬇ Descargar</button>
-            </div>
-            <div class="gallery-item" data-mundo="4">
-                <div class="gallery-thumb" id="thumb4"></div>
-                <span class="gallery-label">MUNDO 4</span>
-                <button class="gallery-download" data-mundo="4">⬇ Descargar</button>
-            </div>
-        </div>
-        <div class="gallery-treasure">
-            <img src="assets/images/icons/gift.png" alt="tesoro" class="gallery-treasure-icon">
-            <span>¡Has desbloqueado un tesoro especial! Reclámalo en tu perfil.</span>
-        </div>
+  <div class="gallery-container">
+    <div class="gallery-header">
+      <img src="assets/images/icons/corona.png" alt="corona" class="gallery-crown">
+      <h1>¡AVENTURA COMPLETADA!</h1>
+      <img src="assets/images/icons/corona.png" alt="corona" class="gallery-crown">
     </div>
+    <p class="gallery-sub">Tus fotos de cada mundo</p>
+    <div class="gallery-grid" id="galleryGrid">
+      <div class="gallery-item" data-mundo="1">
+        <div class="gallery-thumb" id="thumb1"></div>
+        <span class="gallery-label">MUNDO 1</span>
+        <button class="gallery-download" data-mundo="1">⬇ Descargar</button>
+      </div>
+      <div class="gallery-item" data-mundo="2">
+        <div class="gallery-thumb" id="thumb2"></div>
+        <span class="gallery-label">MUNDO 2</span>
+        <button class="gallery-download" data-mundo="2">⬇ Descargar</button>
+      </div>
+      <div class="gallery-item" data-mundo="3">
+        <div class="gallery-thumb" id="thumb3"></div>
+        <span class="gallery-label">MUNDO 3</span>
+        <button class="gallery-download" data-mundo="3">⬇ Descargar</button>
+      </div>
+      <div class="gallery-item" data-mundo="4">
+        <div class="gallery-thumb" id="thumb4"></div>
+        <span class="gallery-label">MUNDO 4</span>
+        <button class="gallery-download" data-mundo="4">⬇ Descargar</button>
+      </div>
+    </div>
+    <div class="gallery-treasure">
+      <img src="assets/images/icons/gift.png" alt="tesoro" class="gallery-treasure-icon">
+      <span>¡Has desbloqueado un tesoro especial! Reclámalo en tu perfil.</span>
+    </div>
+  </div>
 </div>
 
 <script src="js/audio.js"></script>
-<script src="js/rotate.js"></script>
 <script src="js/loading.js"></script>
 <script src="js/camera.js"></script>
 <script src="js/app.js"></script>
