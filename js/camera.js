@@ -5,6 +5,7 @@ const CameraManager = {
   stream: null,
   currentWorld: 1,
   hasCamera: true,
+  inSelfieMode: false,
   worldNames: {1:'MUNDO 1',2:'MUNDO 2',3:'MUNDO 3',4:'MUNDO 4'},
   worldThemes: {1:'#43B047',2:'#ED6E03',3:'#016BC3',4:'#703087'},
   progress: {},
@@ -40,10 +41,14 @@ const CameraManager = {
 
   async open(worldNum){
     this.currentWorld = worldNum;
+    this.inSelfieMode = false;
     this.initWorld(worldNum);
     document.getElementById('cameraWorldNum').textContent = worldNum;
     document.getElementById('btnCoin').style.display = 'flex';
     document.getElementById('btnStar').style.display = 'flex';
+    document.getElementById('btnSelfie').style.display = 'none';
+    document.getElementById('btnCaptureSelfie').style.display = 'none';
+    document.getElementById('selfieHint').style.display = 'none';
     document.getElementById('cameraFrameOverlay').src = `assets/images/frames/marco_mundo${worldNum}.png`;
     this.updateProgress();
     this.overlay.classList.add('show');
@@ -62,12 +67,15 @@ const CameraManager = {
   },
 
   close(){
+    this.inSelfieMode = false;
     if(this.stream){
       this.stream.getTracks().forEach(t => t.stop());
       this.stream = null;
     }
     this.video.srcObject = null;
     this.errorEl.classList.remove('show');
+    document.getElementById('btnCaptureSelfie').style.display = 'none';
+    document.getElementById('selfieHint').style.display = 'none';
     this.overlay.classList.remove('show');
   },
 
@@ -97,26 +105,44 @@ const CameraManager = {
     this.sfx.currentTime = 0;
     this.sfx.play();
 
-    const {w, h} = this.getCaptureSize();
+    const marcoImg = await this.loadMarco(this.currentWorld);
+    const mw = marcoImg.naturalWidth || 640;
+    const mh = marcoImg.naturalHeight || 480;
+
     const canvas = document.createElement('canvas');
-    canvas.width = w;
-    canvas.height = h;
+    canvas.width = mw;
+    canvas.height = mh;
     const ctx = canvas.getContext('2d');
 
     if(this.stream && this.video.videoWidth){
-      ctx.drawImage(this.video, 0, 0, w, h);
+      const vw = this.video.videoWidth;
+      const vh = this.video.videoHeight;
+      const frameRatio = mw / mh;
+      const videoRatio = vw / vh;
+      let sx, sy, sw, sh;
+      if(videoRatio > frameRatio){
+        sh = vh;
+        sw = vh * frameRatio;
+        sx = (vw - sw) / 2;
+        sy = 0;
+      } else {
+        sw = vw;
+        sh = vw / frameRatio;
+        sx = 0;
+        sy = (vh - sh) / 2;
+      }
+      ctx.drawImage(this.video, sx, sy, sw, sh, 0, 0, mw, mh);
     } else {
       ctx.fillStyle = '#FFF9E6';
-      ctx.fillRect(0, 0, w, h);
+      ctx.fillRect(0, 0, mw, mh);
       ctx.fillStyle = '#5C3A21';
-      ctx.font = '24px Fredoka, sans-serif';
+      ctx.font = `${Math.round(mw/26)}px Fredoka, sans-serif`;
       ctx.textAlign = 'center';
-      ctx.fillText('Foto ' + (type === 'coin' ? 'Moneda' : 'Estrella'), w/2, h/2);
-      ctx.fillText('MUNDO ' + this.currentWorld, w/2, h/2 + 40);
+      ctx.fillText('Foto ' + (type === 'coin' ? 'Moneda' : 'Estrella'), mw/2, mh/2 - 20);
+      ctx.fillText('MUNDO ' + this.currentWorld, mw/2, mh/2 + 20);
     }
 
-    const marcoImg = await this.loadMarco(this.currentWorld);
-    ctx.drawImage(marcoImg, 0, 0, w, h);
+    ctx.drawImage(marcoImg, 0, 0, mw, mh);
 
     const dataURL = canvas.toDataURL('image/png');
     p.photos.push({type, data: dataURL});
@@ -138,7 +164,7 @@ const CameraManager = {
       img.onload = () => resolve(img);
       img.onerror = () => {
         const fallback = document.createElement('canvas');
-        fallback.width = 1; fallback.height = 1;
+        fallback.width = 640; fallback.height = 480;
         resolve(fallback);
       };
       img.src = `assets/images/frames/marco_mundo${worldNum}.png`;
@@ -157,36 +183,67 @@ const CameraManager = {
     }
   },
 
-  async takeSelfie(){
+  async enterSelfieMode(){
+    this.inSelfieMode = true;
+    document.getElementById('btnSelfie').style.display = 'none';
+    document.getElementById('btnCoin').style.display = 'none';
+    document.getElementById('btnStar').style.display = 'none';
+    document.getElementById('selfieHint').style.display = 'block';
+
     await this.switchCamera('user');
 
-    await new Promise(r => setTimeout(r, 400));
+    document.getElementById('btnCaptureSelfie').style.display = 'flex';
+  },
+
+  async captureSelfiePhoto(){
+    if(!this.inSelfieMode) return;
+
+    document.getElementById('btnCaptureSelfie').style.display = 'none';
+    document.getElementById('selfieHint').style.display = 'none';
 
     this.sfx.currentTime = 0;
     this.sfx.play();
 
-    const {w, h} = this.getCaptureSize();
+    const marcoImg = await this.loadMarco(this.currentWorld);
+    const mw = marcoImg.naturalWidth || 640;
+    const mh = marcoImg.naturalHeight || 480;
+
     const canvas = document.createElement('canvas');
-    canvas.width = w;
-    canvas.height = h;
+    canvas.width = mw;
+    canvas.height = mh;
     const ctx = canvas.getContext('2d');
 
     if(this.stream && this.video.videoWidth){
-      ctx.translate(w, 0);
+      const vw = this.video.videoWidth;
+      const vh = this.video.videoHeight;
+      const frameRatio = mw / mh;
+      const videoRatio = vw / vh;
+      let sx, sy, sw, sh;
+      if(videoRatio > frameRatio){
+        sh = vh;
+        sw = vh * frameRatio;
+        sx = (vw - sw) / 2;
+        sy = 0;
+      } else {
+        sw = vw;
+        sh = vw / frameRatio;
+        sx = 0;
+        sy = (vh - sh) / 2;
+      }
+      ctx.translate(mw, 0);
       ctx.scale(-1, 1);
-      ctx.drawImage(this.video, 0, 0, w, h);
+      ctx.drawImage(this.video, sx, sy, sw, sh, 0, 0, mw, mh);
       ctx.setTransform(1, 0, 0, 1, 0, 0);
     } else {
       ctx.fillStyle = '#FFF9E6';
-      ctx.fillRect(0, 0, w, h);
+      ctx.fillRect(0, 0, mw, mh);
       ctx.fillStyle = '#5C3A21';
-      ctx.font = '24px Fredoka, sans-serif';
+      ctx.font = `${Math.round(mw/26)}px Fredoka, sans-serif`;
       ctx.textAlign = 'center';
-      ctx.fillText('Selfie Final MUNDO ' + this.currentWorld, w/2, h/2);
+      ctx.fillText('Selfie Final MUNDO ' + this.currentWorld, mw/2, mh/2);
     }
 
-    const marcoImg = await this.loadMarco(this.currentWorld);
-    ctx.drawImage(marcoImg, 0, 0, w, h);
+    ctx.drawImage(marcoImg, 0, 0, mw, mh);
 
     const p = this.progress[this.currentWorld];
     p.selfie = canvas.toDataURL('image/png');

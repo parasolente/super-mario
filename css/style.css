@@ -120,7 +120,7 @@ body{
    ============================================ */
 .worlds-container{width:100%}
 
-.world{display:none;width:100%;height:var(--full-height);position:relative}
+.world{display:none;width:100%;height:var(--full-height);position:relative;overflow:hidden}
 .world.active{display:block}
 
 .bg-wrap{position:fixed;inset:0;z-index:0}
@@ -376,6 +376,24 @@ body{
 .hud-btn.coin{background:rgba(251,208,0,0.9);color:#a64b00}
 .hud-btn.star{background:rgba(229,37,33,0.9);color:#fff}
 .hud-btn.selfie{background:rgba(67,176,71,0.9);color:#fff}
+.hud-btn.capture-selfie{
+  background:#43B047;color:#fff;
+  font-size:clamp(16px,3vw,22px);
+  padding:clamp(14px,2.5vw,20px) clamp(28px,5vw,44px);
+  box-shadow:0 4px 0 #2B7A2F;
+  display:none;align-items:center;gap:8px;
+}
+.hud-btn.capture-selfie:active{transform:translateY(3px);box-shadow:0 0 0 #2B7A2F}
+
+.selfie-hint{
+  position:absolute;bottom:clamp(80px,15vw,120px);left:50%;
+  transform:translateX(-50%);z-index:15;
+  background:rgba(0,0,0,0.6);backdrop-filter:blur(8px);
+  color:#fff;padding:10px 24px;border-radius:30px;
+  font-size:clamp(13px,2.5vw,16px);font-weight:600;
+  white-space:nowrap;border:1px solid rgba(255,255,255,0.15);
+  animation:pulseText 1.5s ease-in-out infinite;
+}
 
 .hud-btn:active{transform:translateY(2px)}
 
@@ -520,13 +538,10 @@ body{
 
 /* >= 1280px: Large desktop */
 @media(min-width:1280px){
-  .content-wrap{justify-content:center;padding-right:0;gap:clamp(40px,5vw,80px)}
-  .mario-left{position:relative;left:auto;transform:none;flex-shrink:0}
+  .content-wrap{padding-right:clamp(40px,6vw,120px)}
+  .mario-left{left:clamp(8%,10vw,14%)}
   .mario-left img{max-height:80vh}
-  .world[data-world="2"] .mario-left,
-  .world[data-world="3"] .mario-left,
-  .world[data-world="4"] .mario-left{left:auto}
-  .mario-card{width:min(50%,650px);margin-right:0}
+  .mario-card{width:min(50%,650px)}
   .gallery-grid{grid-template-columns:repeat(2,1fr)}
 }
 
@@ -562,11 +577,13 @@ body{
   /* HUD compact in landscape */
   .hud-bottom{padding:4px 8px 8px;gap:4px}
   .hud-btn{padding:6px 10px;font-size:11px}
+  .hud-btn.capture-selfie{padding:10px 24px;font-size:14px}
   .hud-top{padding:4px 8px}
   .hud-title,.hud-title-num{font-size:14px}
   .hud-text{font-size:11px}
   .hud-icon{width:14px;height:14px}
   .hud-close{width:26px;height:26px;font-size:14px}
+  .selfie-hint{bottom:clamp(60px,12vh,80px);font-size:12px;padding:6px 16px}
 }
 
 /* ============================================

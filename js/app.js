@@ -67,7 +67,8 @@ const Navigation = {
         });
         document.getElementById('btnCoin').addEventListener('click', () => CameraManager.capture('coin'));
         document.getElementById('btnStar').addEventListener('click', () => CameraManager.capture('star'));
-        document.getElementById('btnSelfie').addEventListener('click', () => CameraManager.takeSelfie());
+        document.getElementById('btnSelfie').addEventListener('click', () => CameraManager.enterSelfieMode());
+        document.getElementById('btnCaptureSelfie').addEventListener('click', () => CameraManager.captureSelfiePhoto());
     },
 
     setupDownloads(){
